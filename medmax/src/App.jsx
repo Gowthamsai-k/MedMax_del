@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import Register from './Components/Register';
 import Login from './Components/Login';
-import Home from './Components/home';
+import Home from './Components/Home';
 import NoPage from './Components/NoPage';
 import PrimarySearchAppBar from './Components/Primary';
 import PrimarySearchAppBar1 from './Components/Pharmacist';
@@ -15,6 +15,7 @@ import Orders from './Components/Orders';
 import Accounts from './Components/Accounts';
 import PaymentMethods from './Components/PaymentMethods';
 import Customer from './Components/Customer';
+import Earnings from './Components/Earnings';
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -63,12 +64,15 @@ function App() {
           <Route path="cart" element={<Cart cart={cart} />} />
           <Route path="orders" element={<Orders />} />
           <Route path="addresses" element={<Addresses />} />
-          <Route path="PaymentMethods" element={<PaymentMethods />} />
+          <Route path="paymentmethods" element={<PaymentMethods />} />
           <Route path="account" element={<Accounts />} />
         </Route>
 
-        {/* Pharmacist route */}
-        <Route path="/pharmacist" element={<PrimarySearchAppBar1 />} />
+        {/* Pharmacist Routes */}
+        <Route path="/pharmacist" element={<PrimarySearchAppBar1 />}>
+          <Route path="earnings" element={<Earnings />} />
+          <Route path="account" element={<Accounts />} />
+        </Route>
 
         {/* Catch all */}
         <Route path="*" element={<NoPage />} />

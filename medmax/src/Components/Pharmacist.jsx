@@ -127,11 +127,7 @@ export default function PrimarySearchAppBar1() {
           </Typography>
          
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton onClick={handleProfileMenuOpen} color="inherit">
-              <AccountCircle />
-            </IconButton>
-          </Box>
+          
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton onClick={handleMobileMenuOpen} color="inherit">
               <MoreIcon />

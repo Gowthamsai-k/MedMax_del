@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Box from '@mui/material/Box';
+import { useNavigate } from 'react-router-dom';
 import Paper from '@mui/material/Paper';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -10,6 +10,7 @@ import TextField from '@mui/material/TextField';
 
 function Login() {
   const [credentials, setCredentials] = useState({ email: '', password: '' });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -19,6 +20,16 @@ function Login() {
     try {
       const res = await axios.post('http://localhost:8080/api/auth/login', credentials);
       alert(`${res.data.message}\nUser Type: ${res.data.type}`);
+      localStorage.setItem('email', credentials.email);
+
+
+      if (res.data.type === 'customer') {
+        navigate('/customer');
+      } else if (res.data.type === 'Pharmacist') {
+        navigate('/pharmacist');
+      } else {
+        alert('Unknown user type. Access denied.');
+      }
     } catch (err) {
       alert('Login failed');
     }
@@ -34,7 +45,6 @@ function Login() {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        
       }}
     >
       <Card sx={{ minWidth: 400, padding: 4 }}>

@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin (origins = "http://localhost:5173") // Adjust if your frontend is hosted elsewhere
+@CrossOrigin (origins = "*") // Adjust if your frontend is hosted elsewhere
 public class AuthController {
 
     @Autowired
@@ -36,6 +36,11 @@ public class AuthController {
     }
 
     private record LoginResponse(String message, String type) {}
+    @GetMapping("/customer/user")
+public User getUser(@RequestParam String email) {
+    return userRepo.findByEmail(email).orElse(null);
+}
+
     
     
 }

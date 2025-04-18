@@ -14,6 +14,7 @@ import {
   Typography,
   Box
 } from '@mui/material';
+
 import {
   Menu as MenuIcon,
   AccountCircle,
@@ -51,12 +52,12 @@ export default function PrimarySearchAppBar() {
 
   // Drawer items and routes
   const drawerItems = [
-    { text: 'Home', path: '/' },
-    { text: 'Cart', path: '/cart' },
-    { text: 'Orders', path: '/orders' },
-    { text: 'Addresses', path: '/addresses' },
-    { text: 'Payment methods', path: '/payment-methods' },
-    { text: 'Account', path: '/account' },
+    { text: 'Home', path: '/customer' },
+    { text: 'Cart', path: '/customer/cart' },
+    { text: 'Orders', path: '/customer/orders' },
+    { text: 'Addresses', path: '/customer/addresses' },
+    { text: 'Payment methods', path: '/customer/PaymentMethods' },
+    { text: 'Account', path: '/customer/account' },
   ];
 
   // Drawer list with navigation
@@ -94,12 +95,6 @@ export default function PrimarySearchAppBar() {
             MedMax
           </Typography>
 
-          {/* Profile Button for Desktop */}
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton onClick={handleProfileMenuOpen} color="inherit">
-              <AccountCircle />
-            </IconButton>
-          </Box>
 
           {/* More Button for Mobile */}
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
@@ -108,12 +103,7 @@ export default function PrimarySearchAppBar() {
             </IconButton>
           </Box>
 
-          {/* Cart Button for Desktop */}
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton onClick={handleCartClick} color="inherit">
-              <Typography variant="body2" color="inherit">Cart</Typography>
-            </IconButton>
-          </Box>
+        
         </Toolbar>
       </AppBar>
 

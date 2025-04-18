@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Card, CardContent, Button, TextField, Typography, Grid, Paper } from '@mui/material';
 
 export default function Addresses() {
   const [addresses, setAddresses] = useState([]);
@@ -32,34 +33,53 @@ export default function Addresses() {
   };
 
   return (
-    <div style={{ padding: '1rem' }}>
-      <h2>Your Addresses</h2>
+    <Paper sx={{ padding: '2rem' }}>
+      <Typography variant="h5" gutterBottom>Your Addresses</Typography>
 
-      <button onClick={() => setShowForm(!showForm)}>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => setShowForm(!showForm)}
+        sx={{ marginBottom: '1rem' }}
+      >
         {showForm ? 'Cancel' : 'Add Address'}
-      </button>
+      </Button>
 
       {showForm && (
-        <form onSubmit={handleAddAddress} style={{ marginTop: '1rem' }}>
-          <input
-            type="text"
-            value={newAddress}
-            onChange={(e) => setNewAddress(e.target.value)}
-            placeholder="Enter new address"
-            required
-            style={{ marginRight: '0.5rem' }}
-          />
-          <button type="submit">Save</button>
-        </form>
+        <Card sx={{ marginBottom: '1rem', padding: '1rem' }}>
+          <CardContent>
+            <form onSubmit={handleAddAddress}>
+              <TextField
+                label="New Address"
+                fullWidth
+                value={newAddress}
+                onChange={(e) => setNewAddress(e.target.value)}
+                required
+                sx={{ marginBottom: '1rem' }}
+              />
+              <Button type="submit" variant="contained" color="primary" fullWidth>
+                Save Address
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
       )}
 
-      <ul style={{ marginTop: '1rem' }}>
-        {addresses.length > 0 ? (
-          addresses.map((addr, index) => <li key={index}>{addr.address}</li>)
-        ) : (
-          <li>No addresses found</li>
-        )}
-      </ul>
-    </div>
+      {addresses.length > 0 ? (
+        <Grid container spacing={2}>
+          {addresses.map((addr, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <Card sx={{ padding: '1rem' }}>
+                <CardContent>
+                  <Typography variant="body1">{addr.address}</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      ) : (
+        <Typography>No addresses found</Typography>
+      )}
+    </Paper>
   );
 }

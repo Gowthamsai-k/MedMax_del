@@ -4,11 +4,13 @@ import CarouselUsage from "./carousel";
 import Box from '@mui/material/Box';
 import PharmaImage from '../assets/logo-pharmacy-3215049_1280.jpg'
 import Footer from "./footer";
+import Layout from './Layout'
 
 function Home()
 {
     return(
         <div>
+          <Layout />
             <CarouselUsage/><br/>
             <br/><br/>
             

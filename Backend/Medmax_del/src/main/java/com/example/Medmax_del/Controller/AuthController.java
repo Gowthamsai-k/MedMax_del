@@ -5,6 +5,7 @@ package com.example.Medmax_del.Controller;
 import com.example.Medmax_del.Model.User;
 import com.example.Medmax_del.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -36,10 +37,8 @@ public class AuthController {
     }
 
     private record LoginResponse(String message, String type) {}
-    @GetMapping("/customer/user")
-public User getUser(@RequestParam String email) {
-    return userRepo.findByEmail(email).orElse(null);
-}
+  
+
 
     
     

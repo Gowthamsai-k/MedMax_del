@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { styled } from '@mui/material/styles';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Outlet } from 'react-router-dom';
 import MedicineImg from '../assets/ai-generated-8722616_1920.jpg';
 import axios from 'axios';
 
@@ -108,8 +108,9 @@ export default function PrimarySearchAppBar1() {
   const toggleDrawer = (open) => () => setDrawerOpen(open);
 
   const drawerItems = [
+    { text: 'Dashboard', path: '/pharmacist' },
     { text: 'Earnings', path: '/pharmacist/earnings' },
-    { text: 'Account', path: '/pharmacist/account' },
+
   ];
 
   const drawerList = (
@@ -180,6 +181,10 @@ export default function PrimarySearchAppBar1() {
         {drawerList}
       </Drawer>
 
+      {/* Render nested routes */}
+      <Outlet />
+
+      {/* Main dashboard content */}
       <Box sx={{ padding: 4 }}>
         <Typography variant="h5" gutterBottom>Available Medicines</Typography>
         <Grid container spacing={2}>

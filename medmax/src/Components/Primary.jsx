@@ -57,7 +57,7 @@ export default function PrimarySearchAppBar() {
     { text: 'Orders', path: '/customer/orders' },
     { text: 'Addresses', path: '/customer/addresses' },
     { text: 'Payment methods', path: '/customer/PaymentMethods' },
-    { text: 'Account', path: '/customer/account' },
+
   ];
 
   // Drawer list with navigation
